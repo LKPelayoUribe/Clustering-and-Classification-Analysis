@@ -4,7 +4,8 @@ This research paper studies cancer prediction from gene expression data using cl
 ### By: Shawn Petersen and Laura K. Pelayo Uribe
 
 # Datasource, approach and cleaning.
-The data used to test these methods is the Gene Expression Cancer RNA-Seq Data Set from UC Irvine Machine learning, https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNASeq# (https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNA-Seq#)
+The data used to test these methods is the Gene Expression Cancer RNA-Seq Data Set from UC Irvine Machine learning, https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNASeq#
+
 The data analysis for this project uses the following algorithms to build models and analyze the results:
 
 - K-Means Clustering
@@ -32,7 +33,7 @@ For this project, genes that contained less than 300 values of 0’s were select
 
 Our analysis indicates that using more features does not necessarily give more accurate clustering or classification results. The clustering methods we applied to our data were k-means and hierarchical. K-means is redundant when we get k = 1 from our GAP, for both when our sample size is 50 and 250. Even when k = 5, it is hard to say both graphs make an impact in clustering analysis. K-means clustering was not a useful approach for clustering this data set. Hierarchical clustering does the best job overall for classification, specifically when we use our complete method to model our dendrogram. The classification methods we applied to our data were Quadratic Discriminant Analysis (QDA) and K-Nearest Neighbors (K-NN). With classification, more features did not give a more accurate result. QDA performed best with only 3 genes as features. The density plot for the 3-gene experiment was promising because there was a bimodal distribution and K-NN was more accurately able to classify. On the other hand, when QDA was performed with 100 genes as features, the distribution fails the Gaussian Mixture Model. There is simply too much of an exact overlap between the class observations. The distributions being almost identical, make it impossible for K-NN to accurately classify the genes with the cancer type. We may think more features to describe a data, will render more accurate clustering and classification, but it may be that too many features, create too much “noise” in our data.
 
-** Final model analysis **
+**Final model analysis**
 - K-Nearest Neighbors: 2.7% Error
 - K-Means Clustering: 16.66% Error
 - Hierarchical Clustering: 16.66% Error
