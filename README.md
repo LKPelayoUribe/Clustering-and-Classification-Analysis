@@ -4,7 +4,7 @@ This research paper studies cancer prediction from gene expression data using cl
 ### By: Shawn Petersen and Laura K. Pelayo Uribe
 
 # Datasource, approach and cleaning.
-The data used to test these methods is the Gene Expression Cancer RNA-Seq Data Set from UC Irvine Machine learning, https://archive.ics.uci.edu/ml/datasets/gene+expression+cancer+RNASeq#
+The data used to test these methods is the gene expression cancer RNA-Seq. (2016). UCI Machine Learning Repository, https://archive-beta.ics.uci.edu/ml/datasets/gene+expression+cancer+rna+seq
 
 The data analysis for this project uses the following algorithms to build models and analyze the results:
 
