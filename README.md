@@ -23,19 +23,19 @@ For this project, genes that contained less than 300 values of 0’s were select
 
 # K-Means Clustering
 
-To determine the best k value, two methods were incorporated. The first method was to compute the k-value using the gap statistic method which is implemented using the clusGap function. This technique uses the output of the clustering algorithm by comparing the change in within-cluster dispersion with the expected null distribution. Using this method to determine the best fit k for both the 50-gene experiment and 250-gene experiment, yielded a k=1. Using a k=1, as seen in Figure 1 and Figure 2 below, all gene samples were grouped into the same cluster for both the 50 and 250 gene samples with no clear groupings. The 2 genes selected (gene_7998, gene_322) were from the first 2 columns of the data set.
+To determine the best k value, two methods were incorporated. The first method was to compute the k-value using the gap statistic method which is implemented using the clusGap function. This technique uses the output of the clustering algorithm by comparing the change in within-cluster dispersion with the expected null distribution. Using this method to determine the best fit k for both the 50-gene experiment and 250-gene experiment, yielded a k=1. Using a k=1, as seen in **Figure 1** and **Figure 2** below, all gene samples were grouped into the same cluster for both the 50 and 250 gene samples with no clear groupings. The 2 genes selected (gene_7998, gene_322) were from the first 2 columns of the data set.
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K%3D1.PNG">
 
-The elbow method was used to estimate k. With this method, the k-means algorithm was with kvalues from 1 to 10. With each iteration of k, the total within-cluster sum of squares was calculated and plotted. Seen below in Figure 3 and Figure 4.
+The elbow method was used to estimate k. With this method, the k-means algorithm was with kvalues from 1 to 10. With each iteration of k, the total within-cluster sum of squares was calculated and plotted. Seen below in **Figure 3** and **Figure 4**.
 
-<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/elboow.PNG">
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/elbow.PNG">
 
-Both the 50-gene and 250-gene plots display the majority of the benefits as k is increased are maximized when k=5. The k-means algorithm was then re-run with the new estimates for k=5. The results on both subsets(50 & 250 genes) are seen below in Figure 5 and Figure 6.
+Both the 50-gene and 250-gene plots display the majority of the benefits as k is increased are maximized when k=5. The k-means algorithm was then re-run with the new estimates for k=5. The results on both subsets(50 & 250 genes) are seen below in **Figure 5** and **Figure 6**.
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K%3D5.PNG">
 
-The 50-gene and 250-gene experiments with K=5 had the same classification error, 14/30=43.66% of samples present in clusters that did not match the in-cluster class majority, as seen in Table 1 and Table 2 below.
+The 50-gene and 250-gene experiments with K=5 had the same classification error, 14/30=43.66% of samples present in clusters that did not match the in-cluster class majority, as seen in **Table 1** and **Table 2** below.
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K_class_error.PNG">
 
@@ -63,13 +63,11 @@ For each model, two procedures were used, correlation and Gaussian Mixture, as p
 linear and quadratic discriminant analysis, which, requires that each observation follows a
 Gaussian distribution.
 
-1. Correlations between each pair of variables were calculated to find pairs that correlated above 0.9. Any gene pairs which correlated above this value were to be removed from the data set. Some gene pairs had a good correlation but no samples exceeded the >0.9 limits. The correlation plots for both the 3-gene experiment and the 100-gene experiment are seen below in Figure 10 and Figure 11
+1. Correlations between each pair of variables were calculated to find pairs that correlated above 0.9. Any gene pairs which correlated above this value were to be removed from the data set. Some gene pairs had a good correlation but no samples exceeded the >0.9 limits. The correlation plots for both the 3-gene experiment and the 100-gene experiment are seen below in **Figure 10** and **Figure 11**
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/corr_analysis.PNG">
 
-2. The Gaussian Mixture Model assumption, which determines whether each set of class observations is normally distributed. To visualize this, density plots were created for each set of class observations. During my investigation of Gaussian Mixture models they are used for representing Normally Distributed subpopulations within an overall population.
-
-The density plots for both classes, for both the 3-gene and 100-gene experiments, are seen below in **Figure 12** and **Figure 13**
+2. The Gaussian Mixture Model assumption, which determines whether each set of class observations is normally distributed. To visualize this, density plots were created for each set of class observations. During my investigation of Gaussian Mixture models they are used for representing Normally Distributed subpopulations within an overall population. The density plots for both classes, for both the 3-gene and 100-gene experiments, are seen below in **Figure 12** and **Figure 13**
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/gaussian_mix.PNG">
 
@@ -87,7 +85,7 @@ Analysis:
 
 The model test accuracy showed that the ROC experiment had a 23.16% error rate, with an AUC of 0.786. The model built for the 100-gene subset performed slightly worse with an error rate of 24.32% and an AUC of 0.907.
 
-Below are the QDA 2x2 classification error tables, Table 3 and Table 4.
+Below are the QDA 2x2 classification error tables, **Table 3** and **Table 4**.
 - 3-genes classification error = 32.38% (41/127)
 - 100-genes classification error = 32.14% (27/84)
 Between the 3 gene and 100 gene experiments, both have virtually the same classification errors.
@@ -96,7 +94,7 @@ Between the 3 gene and 100 gene experiments, both have virtually the same classi
 
 # K-Nearest Neighbors
 
-In the K-nearest neighbor analysis for classification, the most accurate result is when k = 3. In Figure 12 the Gaussian distribution when k = 3 overlaps less than in Figure 13, when k = 100. Both do not follow an exact Gaussian model but when k = 100, the distributions are identical, making it difficult for the k-nearest neighbor to accurately classify the genes with the cancer type. Finally, our ROC curve when k = 3 reinforces its accuracy compared to the ROC curve when k = 100. When k = 3 we get an elbow shape curve, indicating the connection between sensitivity and specificity, which is more efficient. In Figure 15, when k = 100, the ROC curve is ineffective, just reinforcing what was found in the Gaussian distribution when k = 100. Reviewing the classification error results, this classification method performed the best with an error rate of 2.7% (3/108) as seen below in Table 5.
+In the K-nearest neighbor analysis for classification, the most accurate result is when k = 3. In **Figure 12** the Gaussian distribution when k = 3 overlaps less than in **Figure 13**, when k = 100. Both do not follow an exact Gaussian model but when k = 100, the distributions are identical, making it difficult for the k-nearest neighbor to accurately classify the genes with the cancer type. Finally, our ROC curve when k = 3 reinforces its accuracy compared to the ROC curve when k = 100. When k = 3 we get an elbow shape curve, indicating the connection between sensitivity and specificity, which is more efficient. In **Figure 15**, when k = 100, the ROC curve is ineffective, just reinforcing what was found in the Gaussian distribution when k = 100. Reviewing the classification error results, this classification method performed the best with an error rate of 2.7% (3/108) as seen below in **Table 5**.
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/KKN_pred_table5.PNG">
 
@@ -113,7 +111,3 @@ We may think more features to describe a data, will render more accurate cluster
 - K-Means Clustering: 16.66% Error
 - Hierarchical Clustering: 16.66% Error
 - Quadratic Discriminant Analysis: 23.16% Error
-
-
-
-
