@@ -1,4 +1,4 @@
-# STAT 437 Project 1 Data Set Analysis
+# STAT 437 - Project 1
 This research paper studies cancer prediction from gene expression data using clustering methods and classification methods.
 
 ### By: Shawn Petersen and Laura K. Pelayo Uribe
@@ -23,7 +23,29 @@ For this project, genes that contained less than 300 values of 0’s were select
 
 # K-Means Clustering
 
+To determine the best k value, two methods were incorporated. The first method was to compute the k-value using the gap statistic method which is implemented using the clusGap function. This technique uses the output of the clustering algorithm by comparing the change in within-cluster dispersion with the expected null distribution. Using this method to determine the best fit k for both the 50-gene experiment and 250-gene experiment, yielded a k=1. Using a k=1, as seen in Figure 1 and Figure 2 below, all gene samples were grouped into the same cluster for both the 50 and 250 gene samples with no clear groupings. The 2 genes selected (gene_7998, gene_322) were from the first 2 columns of the data set.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K%3D1.PNG">
+
+The elbow method was used to estimate k. With this method, the k-means algorithm was with kvalues from 1 to 10. With each iteration of k, the total within-cluster sum of squares was calculated and plotted. Seen below in Figure 3 and Figure 4.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/elboow.PNG">
+
+Both the 50-gene and 250-gene plots display the majority of the benefits as k is increased are maximized when k=5. The k-means algorithm was then re-run with the new estimates for k=5. The results on both subsets(50 & 250 genes) are seen below in Figure 5 and Figure 6.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K%3D5.PNG">
+
+The 50-gene and 250-gene experiments with K=5 had the same classification error, 14/30=43.66% of samples present in clusters that did not match the in-cluster class majority, as seen in Table 1 and Table 2 below.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K_class_error.PNG">
+
 # Hierarchical Clustering
+
+Hierarchical Clustering was calculated for the 250-gene subset with single, average, and complete linkages. The cut height calculation to obtain 5 clusters was performed for the average linkage experiment. The cut height to obtain 5 clusters with average linkage was calculated to be 20.96. The complete linkage had the best performance with 16.6%(5/30) of the samples located in a cluster not matching the within-cluster majority.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/single.PNG">
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/avg.PNG">
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/complete.PNG">
 
 # Quadratic Discriminant Analysis
 
