@@ -49,7 +49,56 @@ Hierarchical Clustering was calculated for the 250-gene subset with single, aver
 
 # Quadratic Discriminant Analysis
 
+The data was cleaned and a subset was created for classification analysis as follows:
+Gene expressions that contained less than 300 values of 0 were part of the final data set
+1000 genes were randomly sampled
+All samples with a class label of LUAD or BRCA were extracted along with their
+corresponding class labels, 441 observations
+QDA was applied to the two subsets of the data, one contained 3 genes and the other
+containing 100 genes.
+For the 3-gene experiment, 60% of the samples were selected at random for training the model
+with the other 40% used for testing
+For the 100-gene experiment, 75% was used for training with 25% used for testing
+For each model, two procedures were used, correlation and Gaussian Mixture, as part of the
+linear and quadratic discriminant analysis, which, requires that each observation follows a
+Gaussian distribution.
+
+1. Correlations between each pair of variables were calculated to find pairs that correlated above 0.9. Any gene pairs which correlated above this value were to be removed from the data set. Some gene pairs had a good correlation but no samples exceeded the >0.9 limits. The correlation plots for both the 3-gene experiment and the 100-gene experiment are seen below in Figure 10 and Figure 11
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/corr_analysis.PNG">
+
+2. The Gaussian Mixture Model assumption, which determines whether each set of class observations is normally distributed. To visualize this, density plots were created for each set of class observations. During my investigation of Gaussian Mixture models they are used for representing Normally Distributed subpopulations within an overall population.
+
+The density plots for both classes, for both the 3-gene and 100-gene experiments, are seen below in **Figure 12** and **Figure 13**
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/gaussian_mix.PNG">
+
+Analysis:
+1. 3-genes
+- The density plot appears to be normally distributed data for both classes
+- Have feature mixtures in each cancer class are bi-modal and overlapped
+
+2. 100-genes
+- The density plot does not have normally distributed data(left skewed)
+- Both cancer classes exhibit highly irregular distributions, and appear to be unimodal with a significant amount of overlap between the classes
+
+3. Final outcome
+- The distributions of the class observations for the 100-gene violates the Gaussian Mixture Model assumption while the 3-gene experiment does not.
+
+The model test accuracy showed that the ROC experiment had a 23.16% error rate, with an AUC of 0.786. The model built for the 100-gene subset performed slightly worse with an error rate of 24.32% and an AUC of 0.907.
+
+Below are the QDA 2x2 classification error tables, Table 3 and Table 4.
+- 3-genes classification error = 32.38% (41/127)
+- 100-genes classification error = 32.14% (27/84)
+Between the 3 gene and 100 gene experiments, both have virtually the same classification errors.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/QDA_2X2.PNG">
+
 # K-Nearest Neighbors
+
+In the K-nearest neighbor analysis for classification, the most accurate result is when k = 3. In Figure 12 the Gaussian distribution when k = 3 overlaps less than in Figure 13, when k = 100. Both do not follow an exact Gaussian model but when k = 100, the distributions are identical, making it difficult for the k-nearest neighbor to accurately classify the genes with the cancer type. Finally, our ROC curve when k = 3 reinforces its accuracy compared to the ROC curve when k = 100. When k = 3 we get an elbow shape curve, indicating the connection between sensitivity and specificity, which is more efficient. In Figure 15, when k = 100, the ROC curve is ineffective, just reinforcing what was found in the Gaussian distribution when k = 100. Reviewing the classification error results, this classification method performed the best with an error rate of 2.7% (3/108) as seen below in Table 5.
+
+<img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/KKN_pred_table5.PNG">
 
 # Conclusion
 
