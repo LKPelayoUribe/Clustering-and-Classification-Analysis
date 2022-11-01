@@ -2,7 +2,7 @@
 ### By: Shawn Petersen and Laura K. Pelayo Uribe
 This research paper studies cancer prediction from gene expression data using clustering methods and classification methods.
 
-## Datasource, approach and cleaning.
+## Datasource, approach and cleaning
 The data used to test these methods is the gene expression cancer RNA-Seq. (2016). UCI Machine Learning Repository, https://archive-beta.ics.uci.edu/ml/datasets/gene+expression+cancer+rna+seq
 
 The data analysis for this project uses the following algorithms to build models and analyze the results:
