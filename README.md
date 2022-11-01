@@ -1,9 +1,8 @@
-# STAT 437 - Project 1
+# Clustering-and-Classification-Analysis
+### By: Shawn Petersen and Laura K. Pelayo Uribe
 This research paper studies cancer prediction from gene expression data using clustering methods and classification methods.
 
-### By: Shawn Petersen and Laura K. Pelayo Uribe
-
-# Datasource, approach and cleaning.
+## Datasource, approach and cleaning.
 The data used to test these methods is the gene expression cancer RNA-Seq. (2016). UCI Machine Learning Repository, https://archive-beta.ics.uci.edu/ml/datasets/gene+expression+cancer+rna+seq
 
 The data analysis for this project uses the following algorithms to build models and analyze the results:
@@ -21,7 +20,7 @@ The data set contains 801 samples from patients with five cancer types are in th
 
 For this project, genes that contained less than 300 values of 0’s were selected for the data set. From the remaining set, 1000 genes were randomly selected for a more manageable data set to analyze with the various techniques. 30 samples were selected at random along with their cancer diagnosis labels. The data was also scaled to minimize the effects that relatively large values have on clustering metrics. One of them is Euclidean distance which calculates how dissimilar are two values in a cluster. Then two subsets of the cancer data were taken, one with 50 genes and the other with 250 genes, to compare if the number of features would improve the clustering results
 
-# K-Means Clustering
+## K-Means Clustering
 
 To determine the best k value, two methods were incorporated. The first method was to compute the k-value using the gap statistic method which is implemented using the clusGap function. This technique uses the output of the clustering algorithm by comparing the change in within-cluster dispersion with the expected null distribution. Using this method to determine the best fit k for both the 50-gene experiment and 250-gene experiment, yielded a k=1. Using a k=1, as seen in **Figure 1** and **Figure 2** below, all gene samples were grouped into the same cluster for both the 50 and 250 gene samples with no clear groupings. The 2 genes selected (gene_7998, gene_322) were from the first 2 columns of the data set.
 
@@ -39,7 +38,7 @@ The 50-gene and 250-gene experiments with K=5 had the same classification error,
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/K_class_error.PNG">
 
-# Hierarchical Clustering
+## Hierarchical Clustering
 
 Hierarchical Clustering was calculated for the 250-gene subset with single, average, and complete linkages. The cut height calculation to obtain 5 clusters was performed for the average linkage experiment. The cut height to obtain 5 clusters with average linkage was calculated to be 20.96. The complete linkage had the best performance with 16.6%(5/30) of the samples located in a cluster not matching the within-cluster majority.
 
@@ -47,7 +46,7 @@ Hierarchical Clustering was calculated for the 250-gene subset with single, aver
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/avg.PNG">
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/complete.PNG">
 
-# Quadratic Discriminant Analysis
+## Quadratic Discriminant Analysis
 
 The data was cleaned and a subset was created for classification analysis as follows:
 Gene expressions that contained less than 300 values of 0 were part of the final data set
@@ -92,13 +91,13 @@ Between the 3 gene and 100 gene experiments, both have virtually the same classi
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/QDA_2X2.PNG">
 
-# K-Nearest Neighbors
+## K-Nearest Neighbors
 
 In the K-nearest neighbor analysis for classification, the most accurate result is when k = 3. In **Figure 12** the Gaussian distribution when k = 3 overlaps less than in **Figure 13**, when k = 100. Both do not follow an exact Gaussian model but when k = 100, the distributions are identical, making it difficult for the k-nearest neighbor to accurately classify the genes with the cancer type. Finally, our ROC curve when k = 3 reinforces its accuracy compared to the ROC curve when k = 100. When k = 3 we get an elbow shape curve, indicating the connection between sensitivity and specificity, which is more efficient. In **Figure 15**, when k = 100, the ROC curve is ineffective, just reinforcing what was found in the Gaussian distribution when k = 100. Reviewing the classification error results, this classification method performed the best with an error rate of 2.7% (3/108) as seen below in **Table 5**.
 
 <img src="https://raw.githubusercontent.com/LKPelayoUribe/Gene-Expression-Cancer-RNA-Seq/main/KKN_pred_table5.PNG">
 
-# Conclusion
+## Conclusion
 
 Our analysis indicates that using more features does not necessarily give more accurate clustering or classification results. The clustering methods we applied to our data were k-means and hierarchical. K-means is redundant when we get k = 1 from our GAP, for both when our sample size is 50 and 250. Even when k = 5, it is hard to say both graphs make an impact in clustering analysis. K-means clustering was not a useful approach for clustering this data set. Hierarchical clustering does the best job overall for classification, specifically when we use our complete method to model our dendrogram. 
 
